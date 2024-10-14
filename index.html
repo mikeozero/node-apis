@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="./axios.min.js"></script>
+</head>
+<body>
+  <button id="btn1">btn1--get request--no parameter</button>
+  <script type="text/javascript">
+    const btn1 = document.getElementById("btn1");
+    btn1.onclick = () => {
+      // axios({
+      //   url: 'http://localhost:8080/getUser'
+      // }).then(
+      //   response => console.log('data: ',response.data),
+      //   error => console.log('error: ',error)
+      // )
+      axios.get('http://localhost:8080/getUser').then(
+        response => console.log('data: ',response.data),
+        error => console.log('error: ',error)
+      )
+    }
+  </script>
+</body>
+</html>
