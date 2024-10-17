@@ -7,18 +7,109 @@
   <script type="text/javascript" src="./axios.min.js"></script>
 </head>
 <body>
-  <button id="btn1">btn1--get request--no parameter</button>
+  <button id="btn1">🍍btn1--get request--with query data</button><br/><br/>
+  <button id="btn2">btn2--post request--with query data</button><br/><br/>
+  <button id="btn3">btn3--get request--with params data</button><br/><br/>
+  <button id="btn4">btn4--post request--with params data</button><br/><br/>
+  <button id="btn5">🍍btn5--post request--with body data</button><br/><br/>
+  <button id="btn6">btn6--post request--with all 3 kinds of data</button><br/><br/>
   <script type="text/javascript">
     const btn1 = document.getElementById("btn1");
+    const btn2 = document.getElementById("btn2");
+    const btn3 = document.getElementById("btn3");
+    const btn4 = document.getElementById("btn4");
+    const btn5 = document.getElementById("btn5");
+    const btn6 = document.getElementById("btn6");
     btn1.onclick = () => {
       // axios({
-      //   url: 'http://localhost:8080/getUser'
+      //   method: "GET",
+      //   url: 'http://localhost:8080/getUserQuery',
+      //   params: {name:'Justin',age:18}
       // }).then(
       //   response => console.log('data: ',response.data),
       //   error => console.log('error: ',error)
       // )
-      axios.get('http://localhost:8080/getUser').then(
-        response => console.log('data: ',response.data),
+      axios.get('http://localhost:8080/getUserQuery',{params:{name:'Justin',age:18}}).then(
+        response => console.log('response data: ',response.data),
+        error => console.log('error: ',error)
+      )
+    }
+    btn2.onclick = () => {
+      // axios({
+      //   method: "POST",
+      //   url: 'http://localhost:8080/postUserQuery',
+      //   params: {name:'Justin',age:18}
+      // }).then(
+      //   response => console.log('data: ',response.data),
+      //   error => console.log('error: ',error)
+      // )
+      axios.post('http://localhost:8080/postUserQuery',{},{params:{name:'Justin',age:18}}).then(
+        response => console.log('response data: ',response.data),
+        error => console.log('error: ',error)
+      )
+    }
+    btn3.onclick = () => {
+      // axios({
+      //   method: "GET",
+      //   url: 'http://localhost:8080/getUserParams/Justin/20',
+      // }).then(
+      //   response => console.log('data: ',response.data),
+      //   error => console.log('error: ',error)
+      // )
+      axios.get('http://localhost:8080/getUserParams/Justin/20').then(
+        response => console.log('response data: ',response.data),
+        error => console.log('error: ',error)
+      )
+    }
+    btn4.onclick = () => {
+      // axios({
+      //   method: "POST",
+      //   url: 'http://localhost:8080/postUserParams/Justin/20',
+      // }).then(
+      //   response => console.log('data: ',response.data),
+      //   error => console.log('error: ',error)
+      // )
+      axios.post('http://localhost:8080/postUserParams/Justin/20').then(
+        response => console.log('response data: ',response.data),
+        error => console.log('error: ',error)
+      )
+    }
+    btn5.onclick = () => {
+      // axios({
+      //   method: "POST",
+      //   url: 'http://localhost:8080/postUserDody',
+      //   data: {name:'Justin',age:18}  // 对象默认使用json编码
+      //   data: "name=Justin&age=19"    // 字符串默认使用urlencoded编码
+      // }).then(
+      //   response => console.log('data: ',response.data),
+      //   error => console.log('error: ',error)
+      // )
+      // axios.post('http://localhost:8080/postUserBody',"name=Justin&age=19").then(
+      //   response => console.log('response data: ',response.data),
+      //   error => console.log('error: ',error)
+      // )
+      axios.post('http://localhost:8080/postUserBody',{name:'Justin',age:18}).then(
+        response => console.log('response data: ',response.data),
+        error => console.log('error: ',error)
+      )
+    }
+    btn6.onclick = () => {
+      // axios({
+      //   method: "POST",
+      //   url: 'http://localhost:8080/postUserQueryParamsBody/Justin',
+      //   data: {age:18}  // 对象默认使用json编码
+      //   data: "age=19"    // 字符串默认使用urlencoded编码
+      //   params: {sex: 'male'}
+      // }).then(
+      //   response => console.log('data: ',response.data),
+      //   error => console.log('error: ',error)
+      // )
+      // axios.post('http://localhost:8080/postUserQueryParamsBody/Justin',"age=19",{params:{sex: 'male'}}).then(
+      //   response => console.log('response data: ',response.data),
+      //   error => console.log('error: ',error)
+      // )
+      axios.post('http://localhost:8080/postUserQueryParamsBody/Justin',{age:18},{params:{sex:'male'}}).then(
+        response => console.log('response data: ',response.data),
         error => console.log('error: ',error)
       )
     }
